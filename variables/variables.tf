@@ -26,14 +26,14 @@ variable "environment" {
 variable "ec2_tags" {
     type = map(string)
     default = {
-      "Name" = "roboshop-${var.environment[2]}-mongodb"
+      "Name" = "roboshop-mongodb"
       "project" = "roboshop"
       "managed-by" = "terraform"
     }
 }
 
 variable "cidr_blocks" {
-    type = list(number)
+    type = list
     default = [ "0.0.0.0/0" ]
 }
 
