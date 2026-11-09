@@ -11,7 +11,7 @@ variable "instance_type" {
 }
 
 variable "env" {
-    type = list
+    type = list(string)
     default = ["dev","qua","prd"]
     description = "This is for environments"
 }

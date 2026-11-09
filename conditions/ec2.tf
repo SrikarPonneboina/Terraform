@@ -1,11 +1,11 @@
 resource "aws_instance" "roboshop-conditions" {
     ami = var.ami_id
-    instance_type = var.env == "dev" ? "t3.micro" : "t3.medium"
+    instance_type = var.env[0] == "dev" ? "t3.micro" : "t3.small"
     vpc_security_group_ids = [aws_security_group.conditions.id]
 
     tags = {
-        Name = "roboshop-conditions"
-    }
+        Name = "roboshop-${var.env[0]}-moogodb" # this becomes roboshop-dev-monogodb
+    } 
 }
 
 resource "aws_security_group" "conditions" {
