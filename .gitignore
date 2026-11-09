@@ -1,3 +1,33 @@
 
 # Ignore Terraform working directories everywhere
 **/.terraform/
+
+
+# Terraform working directories
+**/.terraform/
+
+# Terraform state files
+*.tfstate
+*.tfstate.*
+*.tfstate.backup
+
+# Crash logs
+crash.log
+crash.*.log
+
+# Variable files (may contain secrets)
+*.tfvars
+*.tfvars.json
+
+# Override files
+override.tf
+override.tf.json
+*_override.tf
+*_override.tf.json
+
+# CLI configuration
+.terraformrc
+terraform.rc
+
+# OS files
+.DS_Store
