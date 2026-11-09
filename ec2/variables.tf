@@ -7,5 +7,5 @@ variable "ami_id" {
 variable "instance_type" {
     type = string
     default = "t3.micro"
-    description = "this is instance t3.micro"
+    description = "This is instance type for RHEL DevOps-practice"
 }
