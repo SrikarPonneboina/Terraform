@@ -9,11 +9,14 @@ variable "instance_type" {
     default = "t3.micro"
     description = "This is the instance type"
 }
-
+variable "project" {
+    type = string
+    default = "roboshop"
+}
 
 variable "environment" {
   type        = list(string)
-  default     = ["DEV", "QUA", "PRD"]
+  default     = ["dev", "qua", "prd"]
   description = "The target deployment environment (DEV, QUA, or PRD)"
 
 #   validation {

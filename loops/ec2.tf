@@ -5,36 +5,42 @@ resource "aws_instance" "roboshop-mongodb" {
     instance_type = var.instance_type 
     vpc_security_group_ids = [
         "aws_security_group.common.id",
-        "aws_security_group.roboshop-instances.id"
+        "aws_security_group.roboshop-instances[count.index].id"   # security group id from roboshop-instances.mongodb.id and then redis.id, mysql.id ...from the created list of security groups
         ]
     tags = {
-      Name = "roboshop-${var.environment[0]}-${var.instances[count.index]}"
-      environment = "var.environment[0]"
+      Name = "roboshop-${var.environment[0]}-${var.instances[count.index]}"    #Name of the instance 1. roboshop-dev-monogodb then redis, mysql...from the list all comes here
+      environment = "var.environment[0]"  # env name dev from the list
+      project = "var.project"
     }
 
 }
 
 resource "aws_security_group" "common" {
-    name = "common"
+    name = "${var.project}-${var.environment[0]}-common"    # this is the security group name
     description = "this is a common sg for all instances"
 
-    ingress {
+    ingress {    #inbound rules 
         from_port = 22
         to_port = 22
         protocol = "tcp"
         cidr_blocks = ["0.0.0.0/0"]
     }
+
+    tags = {
+      Name = "${var.project}-${var.environment[0]}-common"   # this is the name in the security group
+      environment = "var.environment[0]"
+    }
   
 }
 
 resource "aws_security_group" "roboshop-instances" {
-    name = "roboshop-instances"
+    name = "${var.project}-${var.environment[0]}-${var.instances[count.index]}" # this is the security name
     description = "This is instance security group"
-    count = 10
+    count = 10    # this creates 10 security groups
 
     ingress {
-        from_port = 80
-        to_port = 80
+        from_port = 22
+        to_port = 22
         protocol = "tcp"
         cidr_blocks = ["0.0.0.0/0"]
     }
@@ -46,7 +52,7 @@ resource "aws_security_group" "roboshop-instances" {
     }
 
 tags = {
-    Name = "roboshop-${var.environment[0]}-${var.instances[count.index]}"
+    Name = "${var.project}-${var.environment[0]}-${var.instances[count.index]}" #this is the Name in security group
     environment = "var.environment[0]"
 }
     
