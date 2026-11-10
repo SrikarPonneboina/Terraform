@@ -1,4 +1,5 @@
 resource "aws_instance" "roboshop-mongodb" {
+     #left side arguments name are fixed and cannot be changed... ami, instance_type..
     ami = var.ami_id
     instance_type = var.instance_type
     security_groups = [aws_security_group.roboshop.id]

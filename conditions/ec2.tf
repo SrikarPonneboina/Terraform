@@ -1,4 +1,5 @@
 resource "aws_instance" "roboshop-conditions" {
+     #left side arguments name are fixed and cannot be changed... ami, instance_type..
     ami = var.ami_id
     instance_type = var.env[0] == "dev" ? "t3.micro" : "t3.small" #this is the condition that we are using here
     #instance_type = dev == dev ? true : false 

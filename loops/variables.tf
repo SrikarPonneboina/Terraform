@@ -1,7 +1,7 @@
 variable "ami_id" {
     type = string
-    default = ""
-    description = ""
+    default = "ami-0055977a6e828a4f4"
+    description = "This is the ami-id"
 }
 
 variable "instance_type" {
@@ -10,11 +10,6 @@ variable "instance_type" {
     description = "This is the instance type"
 }
 
-variable "instances" {
-    type = list 
-    default = []
-    description = "These are the instances of roboshop project"
-}
 
 variable "environment" {
     type = list 
