@@ -12,14 +12,14 @@ variable "instance_type" {
 
 
 variable "environment" {
-    type = list 
-    #default = ["DEV", "QUA", "PRD"]
-    description = "These are the environments"
+  type        = list(string)
+  default     = ["DEV", "QUA", "PRD"]
+  description = "The target deployment environment (DEV, QUA, or PRD)"
 
-validation {
-  condition =  contains(["DEV", "QUA", "PRD"], var.environment)
-  error_message = "The environment should be from the selected one DEV, QUA, PRD"
-}
+#   validation {
+#     condition     = contains(["DEV", "QUA", "PRD"], var.environment)
+#     error_message = "The environment must be one of: DEV, QUA, PRD."
+#   }
 }
 
 variable "instances" {
