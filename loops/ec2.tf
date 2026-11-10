@@ -4,8 +4,8 @@ resource "aws_instance" "roboshop-instances" {
     ami = var.ami_id
     instance_type = var.instance_type 
     vpc_security_group_ids = [
-        "aws_security_group.common.id",
-        "aws_security_group.roboshop[count.index].id"   # security group id from roboshop-instances.mongodb.id and then redis.id, mysql.id ...from the created list of security groups
+        aws_security_group.common.id,
+        aws_security_group.roboshop[count.index].id   # security group id from roboshop-instances.mongodb.id and then redis.id, mysql.id ...from the created list of security groups
         ]
     tags = {
       Name = "${var.project}-${var.environment[0]}-${var.instances[count.index]}"    #Name of the instance 1. roboshop-dev-monogodb then redis, mysql...from the list all comes here
