@@ -9,8 +9,8 @@ resource "aws_instance" "roboshop-instances" {
         ]
     tags = {
       Name = "${var.project}-${var.environment[0]}-${var.instances[count.index]}"    #Name of the instance 1. roboshop-dev-monogodb then redis, mysql...from the list all comes here
-      environment = "var.environment[0]"  # env name dev from the list
-      project = "var.project"
+      environment = "${var.environment[0]}"  # you have to give variables in ${value} fro tags..env name dev from the list
+      project = "${var.project}"  
     }
 
 }
@@ -28,7 +28,7 @@ resource "aws_security_group" "common" {
 
     tags = {
       Name = "${var.project}-${var.environment[0]}-common"   # this is the name in the security group
-      environment = "var.environment[0]"
+      environment = "${var.environment[0]}"
     }
   
 }
@@ -53,7 +53,7 @@ resource "aws_security_group" "roboshop" {
 
 tags = {
     Name = "${var.project}-${var.environment[0]}-${var.instances[count.index]}" #this is the Name in security group
-    environment = "var.environment[0]"
+    environment = "${var.environment[0]}"  
 }
     
 }
