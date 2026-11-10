@@ -8,7 +8,7 @@ resource "aws_instance" "roboshop-mongodb" {
         "aws_security_group.roboshop-instances.id"
         ]
     tags = {
-      Name = roboshop-${var.environment[0]}-${var.instances[count.index]}
+      Name = "roboshop-${var.environment[0]}-${var.instances[count.index]}"
       environment = "var.environment[0]"
     }
 
