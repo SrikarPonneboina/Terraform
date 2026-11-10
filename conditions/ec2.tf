@@ -4,8 +4,8 @@ resource "aws_instance" "roboshop-conditions" {
     instance_type = var.env[0] == "dev" ? "t3.micro" : "t3.small" #this is the condition that we are using here
     #instance_type = dev == dev ? true : false 
     vpc_security_group_ids = [
-    "aws_security_group.conditions.id",
-    "aws_security_group.common.id"]
+    aws_security_group.conditions.id,
+    aws_security_group.common.id]
 
     tags = {
         Name = "roboshop-${var.env[0]}-mongodb" # this becomes roboshop-dev-monogodb
