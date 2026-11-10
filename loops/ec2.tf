@@ -1,6 +1,7 @@
 resource "aws_instance" "roboshop-instances" {
     #left side arguments name are fixed and cannot be changed... ami, instance_type..arguments pre-defined by the Terraform AWS Provider
-    count = 10
+    #count = 10    # this creates 10 instances
+    count = length(var.instances)    # length is the function it gives length of instances which is == 10 
     ami = var.ami_id
     instance_type = var.instance_type 
     vpc_security_group_ids = [
@@ -36,7 +37,8 @@ resource "aws_security_group" "common" {
 resource "aws_security_group" "roboshop" {
     name = "${var.project}-${var.environment[0]}-${var.instances[count.index]}" # this is the security name
     description = "This is instance security group"
-    count = 10    # this creates 10 security groups
+    #count = 10    # this creates 10 security groups
+    count = length(var.instances)   # length is the function it gives length of instances which is == 10 
 
     ingress {
         from_port = 80

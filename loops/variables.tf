@@ -37,5 +37,5 @@ variable "hostedzone_id" {
 }
 
 variable "domain_name" {
-    default = "sriakarlabs.space"
+    default = "srikarlabs.space"
 }
