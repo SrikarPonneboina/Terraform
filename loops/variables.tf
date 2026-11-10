@@ -31,3 +31,11 @@ variable "instances" {
     description = "These are the components for the roboshop project"
   
 }
+
+variable "hostedzone_id" {
+    default = "Z064550534ZXEXGIQB3I4"
+}
+
+variable "domain_name" {
+    default = "sriakarlabs.space"
+}

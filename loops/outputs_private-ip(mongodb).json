@@ -1,0 +1,7 @@
+{
+  "roboshop-instance": {
+    "sensitive": false,
+    "type": "string",
+    "value": "172.31.30.222"
+  }
+}
