@@ -34,5 +34,9 @@ resource "aws_security_group" "state-demo" {
     }
 
     tags = var.ec2_tags
+
+    lifecycle {
+      create_before_destroy = true
+    }
   
 }
