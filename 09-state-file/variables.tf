@@ -25,7 +25,7 @@ variable  "instance_type" {
 variable "ec2_tags" {
     type = map
     default = {
-        Name = "roboshop-mongodb-1"
+        Name = "roboshop-mongodb"
         Environment = "dev"
         Terraform = "true"
         Project = "roboshop"

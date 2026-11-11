@@ -9,7 +9,7 @@ resource "aws_instance" "state-demo" {
 
 resource "aws_security_group" "state-demo" {
 
-    name = "state-demo"
+    name = "state-demo-1"
     description = "Allow connection to monogdb"
 
     ingress {
