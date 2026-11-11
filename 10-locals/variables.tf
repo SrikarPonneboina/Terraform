@@ -1,8 +1,8 @@
-# variable "ami_id" {
-#     type = string
-#     default = "ami-0055977a6e828a4f4"
-#     description = "this is ami_id"
-# }
+variable "ami_id" {
+    type = string
+    default = "ami-0055977a6e828a4f4"
+    description = "this is ami_id"
+}
 
 # variable "instance_type" {
 #     type = string
@@ -31,4 +31,12 @@ variable "ec2_tags" {
         Project = "roboshop"
         Component = "mongodb"
     }
+}
+
+variable "project" {
+    default = "roboshop"
+}
+
+variable "environment" {
+    default = "dev"
 }

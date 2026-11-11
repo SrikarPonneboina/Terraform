@@ -5,13 +5,13 @@ terraform {
       version = "~> 6.0"
     }
   }
-  backend "s3" {
-    bucket       = "state-tf-statefile"
-    key          = "dev.terraform.tfstate"
-    region       = "us-east-1"
-    encrypt      = true
-    use_lockfile = true # Built-in S3 state locking
-  }
+  # backend "s3" {
+  #   bucket       = "state-tf-statefile"
+  #   key          = "dev.terraform.tfstate"
+  #   region       = "us-east-1"
+  #   encrypt      = true
+  #   use_lockfile = true # Built-in S3 state locking
+  # }
 }
 
 # Configure the AWS Provider
