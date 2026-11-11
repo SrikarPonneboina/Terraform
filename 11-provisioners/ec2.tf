@@ -25,11 +25,23 @@ resource "aws_instance" "provisioners" {
     password = "DevOps321"   
     }
 
-    provisioner "remote-exec" {         #connects to remote server and executed the commands from the list
-    inline = [
-      "sudo dnf install nginx -y",
-      "sudo systemctl start nginx",
-      "sudo systemctl enable nginx"
+    # provisioner "remote-exec" {         #connects to remote server and executed the commands from the list
+    # inline = [
+    #   "sudo dnf install nginx -y",
+    #   "sudo systemctl start nginx",
+    #   "sudo systemctl enable nginx"
+    # ]
+    # }
+
+    provisioner "file" {            #file provisioner all the commands in the file it executes
+        source = "bootstrap.sh"
+        destination = "/tmp/bootstrap.sh" 
+    }
+
+    provisioner "remote-exec" {
+    inline = [ 
+    "chmod +x /tmp/bootstrap.sh",
+    "sudo sh /tmp/bootstrap.sh"
     ]
     }
 
