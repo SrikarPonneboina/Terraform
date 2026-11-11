@@ -33,6 +33,13 @@ resource "aws_instance" "provisioners" {
     ]
     }
 
+    provisioner "remote-exec" {         #connects to remote server and executed the commands from the list
+    when = destroy
+    inline = [
+      "sudo systemctl stop nginx"
+    ]
+    }
+
     tags = var.ec2_tags
 }
 
