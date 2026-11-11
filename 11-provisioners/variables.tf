@@ -11,6 +11,7 @@ variable "instance_type" {
 }
 
 variable "ec2_tags" {
+    type = map  
     default = {
         Name = "roboshop"
         Environment = "dev"
