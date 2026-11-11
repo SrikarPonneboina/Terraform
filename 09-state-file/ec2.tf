@@ -35,8 +35,8 @@ resource "aws_security_group" "state-demo" {
 
     tags = var.ec2_tags
 
-    lifecycle {
-      create_before_destroy = true
+    lifecycle {         #if there is edit in the security group it creates creates sg first and then attaches it to instance and delete old sg
+      create_before_destroy = true          #  create before destroy due to this
     }
   
 }
